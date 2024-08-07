@@ -7,9 +7,20 @@ const userRoutes = require("./routes/userRoutes");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const corsOptions = {
+  origin: [
+    "http://localhost:5173",
+    "https://mern-food-ordering-app-frontend-ksv0.onrender.com",
+  ],
+  optionsSuccessStatus: 200,
+};
+
 // Middleware
-app.use(cors());
+// app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
+
+app.use(cors(corsOptions));
 
 // Routes
 app.use("/api/users", userRoutes);
